@@ -3,7 +3,7 @@ import instaIcon from '../Assets/imgbin_instagram-logo-icon-png.webp'
 import facebookIcon from '../Assets/1657548367Facebook-logo.webp'
 import linkedinIcon from '../Assets/vecteezy-linkedin-logo-png-linkedin-logo-transparent-png-linkedin-23986970-66ae048f0e528.webp'
 import emailjs from '@emailjs/browser'
-import {useState } from 'react'
+import {useState,useReducer } from 'react'
 const socialIcon =
     [
         <li key={xIcon}><a href="">
@@ -18,6 +18,23 @@ const socialIcon =
 const ContactComponent = ({contactTitle,socialIcons})=>{
     // **loading state***
     const [loading, setLoading] = useState(false)
+
+    // formHandling
+    const [state, dispatch] = useReducer((state,action)=>{
+        switch(action.type){
+            case "Set_Name":
+                return {...state, name: action.value}
+            case "Set_Email":
+                return {...state, email: action.value}
+            case "Set_Message":
+                return {...state, message: action.value}
+            default: return
+        }
+    },{
+        name: '',
+        email: '',
+        message: ''
+    })
     // **** checkbox checked value ****
     const [checked,setChecked] = useState({
         radio1: false,
@@ -27,11 +44,6 @@ const ContactComponent = ({contactTitle,socialIcons})=>{
     // *** checkbox inquiry value ***
     const [checkValue, setCheckValue] = useState({})
     // *** user_data ***
-    const [userDetails,setUserDetails] = useState({
-        name: '',
-        email: '',
-        message: ''
-    })
     // *** function called when the checkbox is clicked
     // const handleClick = (e) => {
     //     const { name } = e.target;
@@ -45,19 +57,15 @@ const ContactComponent = ({contactTitle,socialIcons})=>{
     //     console.log(checkValue);
     // };
     // *** user details updater
-    const handleUserDetails = (e) => {
-        const { name, value } = e.target;
-        setUserDetails((prevDetails) => ({ ...prevDetails, [name]: value }));
-    };
     // *** form submit functionality
     const submitEmail = (e) => {
         e.preventDefault();
         setLoading(true)
         const messageTemplate = {
             to_name: "Care Tech Hub",
-            senderName: userDetails.name,
-            senderEmail: userDetails.email,
-            message: userDetails.message,
+            senderName: state.name,
+            senderEmail: state.email,
+            message: state.message,
         };
         emailjs.send(
             'service_wllmb0f',
@@ -68,11 +76,7 @@ const ContactComponent = ({contactTitle,socialIcons})=>{
             .then((response) => {
                 setLoading(false)
                 alert('Email Sent Successful',response);
-                setUserDetails({
-                    name: '',
-                    email: '',
-                    message: ''
-                });
+                state.forEach(item => item = '')
             })
             .catch((error) =>{
                 setTimeout(() => {
@@ -101,18 +105,18 @@ const ContactComponent = ({contactTitle,socialIcons})=>{
                 <div className="inputs">
                 <input
                     required={true}
-                    onChange={handleUserDetails}
+                    onChange={e => dispatch({type: "Set_Name", value: e.target.value})}
                     type="text"
                     name="name"
                     placeholder="Name"
-                    value={userDetails.name}/>
+                    value={state.name}/>
                 <input
                     required={true}
-                    onChange={handleUserDetails}
+                    onChange={e => dispatch({type: "Set_Email", value: e.target.value})}
                     type="email"
                     name="email"
                     placeholder='Email'
-                    value={userDetails.email}/>
+                    value={state.email}/>
                 </div>
                 <div className="contact_body_details">
                     {/* <div title='Give us an insight of what you want to talk about' className="contact_inquiry">
@@ -138,11 +142,11 @@ const ContactComponent = ({contactTitle,socialIcons})=>{
                     </div> */}
                     <textarea
                         required={true}
-                        onChange={handleUserDetails}
+                        onChange={e => dispatch({type: "Set_Message", value: e.target.value})}
                         placeholder='Message'
                         id="message"
                         name="message"
-                        value={userDetails.message}>
+                        value={state.message}>
                     </textarea>
                     <div className="messageFooter">
                         <ul>
