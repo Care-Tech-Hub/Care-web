@@ -44,7 +44,7 @@ const mobileScreenSize = windowWidth <= 897 ? true : false;
                         mobileScreenSize ?
                         <SideNav /> :
                         <ul>
-                        {/* remember to add underlining to the current link in */}
+
                         <li>
                             <a href="#HomeSection">Home</a>
                         </li>
@@ -57,6 +57,7 @@ const mobileScreenSize = windowWidth <= 897 ? true : false;
                         <li>
                             <a href="#ContactSection">Contact</a>
                         </li>
+
                     </ul>
                     }
                 </div>

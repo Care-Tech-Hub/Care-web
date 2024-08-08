@@ -1,7 +1,8 @@
 const PrivacyPolicy = ()=>{
     return(
         <section>
-            <p>text</p>
+            <h1>Care Tech Hub Privacy Policy</h1>
+            
         </section>
     )
 }

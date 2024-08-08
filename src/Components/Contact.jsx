@@ -13,7 +13,7 @@ const socialIcon =
         <li key={facebookIcon}><a href="https://www.facebook.com/profile.php?id=61561526923757">
             <img width='50px' src={facebookIcon} alt="facebook" /></a></li>,
         <li key={linkedinIcon}><a href="https://www.linkedin.com/in/care-tech-hub-256335320?trk=contact-info">
-            <img width='50px' src={linkedinIcon} alt="linkedin" /></a></li>
+            <img width='50px' src={linkedinIcon} alt="linkedin" /></a></li>,
     ]
 const ContactComponent = ({contactTitle,socialIcons})=>{
     // **loading state***
