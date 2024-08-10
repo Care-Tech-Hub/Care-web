@@ -31,11 +31,12 @@ const mobileScreenSize = windowWidth <= 897 ? true : false;
         })
     },);
     })
+    useEffect(()=> console.log(windowWidth),[windowWidth])
     return(
         <nav className={showNavLinks ? 'nav_bar' : 'centerNavText'}>
             <div className='nav_logo_container'>
                 <a title="Home" href="."><img width='88px' src={careLogo} alt="Logo" /></a>
-                {windowWidth > '485px' && <h1 className='logo_heading'>Care Tech Hub</h1>}
+                {windowWidth >= '485' && <h1 className='logo_heading'>Care Tech Hub</h1>}
             </div>
             {
             showNavLinks &&
@@ -46,7 +47,7 @@ const mobileScreenSize = windowWidth <= 897 ? true : false;
                         <ul>
 
                         <li>
-                            <a href="#HomeSection">Home</a>
+                            <a href=".">Home</a>
                         </li>
                         <li>
                             <a href="#AboutSection">About</a>

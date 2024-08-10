@@ -66,8 +66,10 @@ body{
             justify-content: center;
             align-items: center;
             color: #fff;
-            font: var(--heading-size-4) var(--Logo-font);
         }
+            .nav_logo_container .logo_heading{
+            font: var(--heading-size-2) var(--Logo-font);
+            }
         .nav_links_container{
             place-content: center;
         }
@@ -474,6 +476,48 @@ body{
                     .join_us_sections_detail article{
                         font-weight: 400 !important;
                     }
+            .Privacy_plcy_section{
+                width: 100vw;
+                height: auto;
+                padding:  120px 0 0 50px;
+            }
+                .Privacy_plcy_section h1{
+                    font: var(--heading-size-1) var(--Logo-font);
+                    margin-top: 10px;
+                    color: var(--Primary-care-color--);
+                }
+                .Privacy_plcy_section h4{
+                    font: var(--heading-size-3) var(--text-light-font);
+                    margin-left: 10px;
+                    color: var(--care-text-color2);
+                    margin-bottom: 10px;
+                }
+                .Privacy_plcy_section p{
+                    font: var(--font-size-1) var(--Logo-font);
+                    color: var(--care-text-color);
+                    padding-inline: 10px;
+                    padding-block: 5px;
+                }
+                .Privacy_plcy_section h3{
+                    font: var(--heading-size-4) var(--text-medium-font);
+                    color: var(--care-tp-color);
+                    margin-block: 10px;
+                }
+                .Privacy_plcy_section ol{
+                    margin-left: 25px;
+                    color: var(--care-text-color);
+                    font: var(--font-size-1) var(--Logo-font);
+                }
+                .Privacy_plcy_section ol ul li,
+                .Privacy_plcy_section ul li{
+                    list-style-type: disc;
+                    margin-left: 20px;
+                    font-family: var(--text-light-font);
+                }
+                .Privacy_plcy_section ul li{
+                   color: var(--care-tp-color);
+                   font-size: var(--font-size-1);
+                }
             footer{
                 width: flex;
                 height: 150px;
